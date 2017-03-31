@@ -1,7 +1,13 @@
 package com.badlogic.drop.api;
 
 import com.badlogic.drop.components.Transform;
+import com.badlogic.drop.game.objects.Bucket;
+import com.badlogic.drop.managers.GameObjectsManager;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.Manifold;
 
 import java.util.ArrayList;
 
@@ -40,6 +46,14 @@ public abstract class GameObject implements ApplicationCycle {
     public void setTag(String tag) {
         this.tag = tag;
     }
+
+    public void beginContact(Contact contact) {}
+
+    public void endContact(Contact contact) {}
+
+    public void preSolve(Contact contact, Manifold oldManifold) {}
+
+    public void postSolve(Contact contact, ContactImpulse impulse) {}
 
     @Override
     public final void create() {
@@ -82,7 +96,18 @@ public abstract class GameObject implements ApplicationCycle {
     public final void dispose() {
         for (Component component : components) {
             component.dispose();
-            component.destroy();
+            component.onDestroy();
         }
     }
+
+    @Override
+    public void start() {}
+
+    @Override
+    public void update() {}
+
+    @Override
+    public void onDestroy() {}
+
+    public void destroy() {}
 }

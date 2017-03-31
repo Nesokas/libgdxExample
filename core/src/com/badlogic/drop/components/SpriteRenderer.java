@@ -53,7 +53,7 @@ public class SpriteRenderer extends Component {
     }
 
     @Override
-    public void destroy() {
+    public void onDestroy() {
         texture.dispose();
     }
 }

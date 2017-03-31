@@ -39,6 +39,28 @@ public abstract class BoxCollider extends Component implements Collider {
 
         body.createFixture(fixtureDef);
 
+        gameObject.scene.world.setContactListener(new ContactListener() {
+            @Override
+            public void beginContact(Contact contact) {
+                gameObject.beginContact(contact);
+            }
+
+            @Override
+            public void endContact(Contact contact) {
+                gameObject.endContact(contact);
+            }
+
+            @Override
+            public void preSolve(Contact contact, Manifold oldManifold) {
+                gameObject.preSolve(contact, oldManifold);
+            }
+
+            @Override
+            public void postSolve(Contact contact, ContactImpulse impulse) {
+                gameObject.postSolve(contact, impulse);
+            }
+        });
+
         shape.dispose();
     }
 
@@ -49,7 +71,7 @@ public abstract class BoxCollider extends Component implements Collider {
     }
 
     @Override
-    public void destroy() {
+    public void onDestroy() {
 
     }
 

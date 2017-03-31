@@ -21,5 +21,5 @@ public interface ApplicationCycle {
 
     public void update();
 
-    public void destroy();
+    public void onDestroy();
 }

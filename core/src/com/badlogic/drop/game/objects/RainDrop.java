@@ -5,6 +5,7 @@ import com.badlogic.drop.api.Scene;
 import com.badlogic.drop.components.SpriteRenderer;
 import com.badlogic.drop.managers.GameObjectsManager;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.physics.box2d.Contact;
 
 /**
  * Created by support on 30/03/2017.
@@ -27,17 +28,11 @@ public class RainDrop extends GameObject {
     @Override
     public void update() {
         transform.position.y -= 200 * Gdx.graphics.getDeltaTime();
-
-        
-
-        if(spriteRenderer.overlaps(bucket)) {
-            dropSound.play();
-            iter.remove();
-        }
     }
 
     @Override
-    public void destroy() {
-
+    public void beginContact(Contact contact) {
+        dropSound.play();
+        iter.remove();
     }
 }
