@@ -13,7 +13,7 @@ public class MainGameScene extends Scene {
     public Bucket bucket;
 
     public MainGameScene(Game game, float width, float height, World world) {
-        super(game, width, height);
+        super(game, width, height, world);
         bucket = new Bucket(this);
     }
 
@@ -28,7 +28,7 @@ public class MainGameScene extends Scene {
     }
 
     @Override
-    public void destroy() {
+    public void onDestroy() {
 
     }
 }

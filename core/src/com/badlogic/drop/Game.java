@@ -1,7 +1,6 @@
 package com.badlogic.drop;
 
 import com.badlogic.drop.api.Scene;
-import com.badlogic.drop.listeners.CollisionListener;
 import com.badlogic.drop.managers.CameraManager;
 import com.badlogic.drop.managers.SpriteRendererManager;
 import com.badlogic.drop.scenes.MainGameScene;
@@ -10,9 +9,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -24,8 +20,8 @@ import java.util.Iterator;
 
 public class Game extends ApplicationAdapter {
 
-	private Sound dropSound;
-	private Music rainMusic;
+	//private Sound dropSound;
+	//private Music rainMusic;
 
 	private Array<Rectangle> raindrops;
 	private long lastDropTime;
@@ -49,13 +45,11 @@ public class Game extends ApplicationAdapter {
 	@Override
 	public void create () {
 
-		world.setContactListener(new CollisionListener());
-
-		dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
+/*		dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
 		rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
 
 		rainMusic.setLooping(true);;
-		rainMusic.play();
+		rainMusic.play(); */
 
 		raindrops = new Array<Rectangle>();
 		spawnRaindrop();
@@ -82,19 +76,19 @@ public class Game extends ApplicationAdapter {
 
 		// begin a new batch and draw the bucket and
 		// all drops
-		batch.begin();
+		/*batch.begin();
 		for(Rectangle raindrop: raindrops) {
 			batch.draw(dropImage, raindrop.x, raindrop.y);
 		}
-		batch.end();
+		batch.end();*/
 
 		// check if we need to create a new raindrop
-		if(TimeUtils.nanoTime() - lastDropTime > 1000000000) spawnRaindrop();
+		//if(TimeUtils.nanoTime() - lastDropTime > 1000000000) spawnRaindrop();
 
 		// move the raindrops, remove any that are beneath the bottom edge of
 		// the screen or that hit the bucket. In the later case we play back
 		// a sound effect as well.
-		Iterator<Rectangle> iter = raindrops.iterator();
+		/*Iterator<Rectangle> iter = raindrops.iterator();
 		while(iter.hasNext()) {
 			Rectangle raindrop = iter.next();
 			raindrop.y -= 200 * Gdx.graphics.getDeltaTime();
@@ -103,7 +97,7 @@ public class Game extends ApplicationAdapter {
 				dropSound.play();
 				iter.remove();
 			}
-		}
+		}*/
 
 		cameraManager.render();
 		spriteRendererManager.render();
@@ -119,9 +113,9 @@ public class Game extends ApplicationAdapter {
 		cameraManager.dispose();
 		spriteRendererManager.dispose();
 
-		dropImage.dispose();
-		dropSound.dispose();
-		rainMusic.dispose();
+		//dropImage.dispose();
+		//dropSound.dispose();
+		//rainMusic.dispose();
 
 		for (Scene scene : scenes) {
 			scene.dispose();

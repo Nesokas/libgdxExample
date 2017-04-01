@@ -32,7 +32,7 @@ public class RainDrop extends GameObject {
 
     @Override
     public void beginContact(Contact contact) {
-        dropSound.play();
-        iter.remove();
+        //dropSound.play();
+        //iter.remove();
     }
 }

@@ -17,7 +17,7 @@ public class SpriteRendererManager implements ApplicationCycle {
     private SpriteBatch batch;
     private CameraManager cameraManager;
 
-    void SpriteRenderManager(){
+    SpriteRendererManager(){
         spriteRenderers = new ArrayList<SpriteRenderer>();
         cameraManager = CameraManager.getCameraManager();
     }
@@ -81,7 +81,7 @@ public class SpriteRendererManager implements ApplicationCycle {
     }
 
     @Override
-    public void destroy() {
+    public void onDestroy() {
 
     }
 }

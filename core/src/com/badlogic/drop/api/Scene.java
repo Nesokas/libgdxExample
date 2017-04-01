@@ -27,11 +27,6 @@ public abstract class Scene implements ApplicationCycle {
 
         game.registerScene(this);
         gameObjects = new ArrayList<GameObject>();
-
-        mainCamera = new OrthographicCamera();
-        mainCamera.setToOrtho(false, width, height);
-
-        CameraManager.getCameraManager().addCamera(mainCamera);
     }
 
     public void registerGameObject(GameObject newGameObject){
@@ -41,6 +36,10 @@ public abstract class Scene implements ApplicationCycle {
 
     @Override
     public final void create() {
+        mainCamera = new OrthographicCamera();
+        mainCamera.setToOrtho(false, width, height);
+        CameraManager.getCameraManager().addCamera(mainCamera);
+
         for (GameObject gameObject : gameObjects) {
             gameObject.create();
             gameObject.start();

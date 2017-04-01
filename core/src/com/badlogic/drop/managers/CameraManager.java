@@ -15,6 +15,10 @@ public class CameraManager implements ApplicationCycle {
     private Camera mainCamera;
     private ArrayList<Camera> cameras;
 
+    CameraManager() {
+        cameras = new ArrayList<Camera>();
+    }
+
     public static CameraManager getCameraManager() {
         if(cameraManager == null)
             cameraManager = new CameraManager();
@@ -79,7 +83,7 @@ public class CameraManager implements ApplicationCycle {
     }
 
     @Override
-    public void destroy() {
+    public void onDestroy() {
 
     }
 }
