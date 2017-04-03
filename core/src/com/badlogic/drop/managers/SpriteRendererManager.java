@@ -42,7 +42,6 @@ public class SpriteRendererManager implements ApplicationCycle {
     @Override
     public void render() {
         batch.setProjectionMatrix(cameraManager.getMainCamera().combined);
-
         batch.begin();
         for(SpriteRenderer spriteRenderer : spriteRenderers) {
             spriteRenderer.draw(batch);

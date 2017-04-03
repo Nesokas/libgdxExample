@@ -24,6 +24,8 @@ public abstract class Scene implements ApplicationCycle {
     public Scene(Game game, float width, float height, World world){
         this.game = game;
         this.world = world;
+        this.width = width;
+        this.height = height;
 
         game.registerScene(this);
         gameObjects = new ArrayList<GameObject>();
